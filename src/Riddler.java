@@ -9,33 +9,86 @@
 public class Riddler {
 
     public String decryptOne(String encrypted) {
-        String decrypted = "";
+        // Ceasar shift
+        // key is +17 (or -9)
+        StringBuilder decrypted = new StringBuilder();
+        int shift = 17;
 
         // TODO: Complete the decryptOne() function.
+        for (int i = 0; i < encrypted.length(); i++) {
+            char character = encrypted.charAt(i);
 
-        return decrypted;
+            // Checks if the character is an uppercase letter and if it is shifts it accordingly
+            if (Character.isUpperCase(character)) {
+                char decryptedChar = (char)(((character - 'A' - shift + 26) % 26) + 'A');
+                decrypted.append(decryptedChar);
+            }
+
+            // Checks if character is a lowercase letter and if it is shifts it accordingly
+            else if (Character.isLowerCase(character)) {
+                char decryptedChar = (char)(((character - 'a' - shift + 26) % 26) + 'a');
+                decrypted.append(decryptedChar);
+            }
+
+            // Leaves the character alone if its not a letter
+            else {
+                decrypted.append(character);
+            }
+        }
+        System.out.println(decrypted.toString());
+        return decrypted.toString();
     }
 
     public String decryptTwo(String encrypted) {
-        String decrypted = "";
-
         // TODO: Complete the decryptTwo() function.
 
-        return decrypted;
+        StringBuilder decrypted = new StringBuilder();
+
+        // Splits up the encrypted string at each of the spaces to get the individual ASCII numbers
+        String[] asciiCharacters = encrypted.split(" ");
+
+        for (String asciiChar : asciiCharacters) {
+            // Changes the string ASCII number to an integer
+            int asciiValue = Integer.parseInt(asciiChar);
+
+            // Changes the ASCII number to its letter character
+            char character = (char) asciiValue;
+
+            // Adds the character to the final decrypted string
+            decrypted.append(character);
+        }
+
+        System.out.println(decrypted.toString());
+        return decrypted.toString();
     }
 
     public String decryptThree(String encrypted) {
-        String decrypted = "";
+        StringBuilder decrypted = new StringBuilder();
 
         // TODO: Complete the decryptThree() function.
 
-        return decrypted;
+        // ASCII Binary
+
+        // split digits into an array
+            // new array thing every 8 digits
+
+        //for each thing in the array,
+            //translate from binary to regular numbers
+
+        // for each number in the array
+            //change into its letter value
+            // add it to the final string
+
+        System.out.println(decrypted.toString());
+        return decrypted.toString();
     }
 
     public String decryptFour(String encrypted) {
         String decrypted = "";
 
         // TODO: Complete the decryptFour() function.
+
+        //????
 
         return decrypted;
     }
