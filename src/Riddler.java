@@ -64,18 +64,21 @@ public class Riddler {
     public String decryptThree(String encrypted) {
         StringBuilder decrypted = new StringBuilder();
 
-        // TODO: Complete the decryptThree() function.
-        // ASCII Binary
         // split digits into an array
         // new array thing every 8 digits
         int arraySize = (int) Math.ceil(encrypted.length() / 8.0);
         String[] binaryBits = new String[arraySize];
 
+        // I tried doing i+=8 but for some reason it kept giving me errors and this worked somehow so i stuck with it
         for (int i = 0; i < binaryBits.length; i++) {
             int start = i * 8;
             int end = Math.min(start + 8, encrypted.length());
             binaryBits[i] = encrypted.substring(start, end);
         }
+
+//        for (int i = 0; i < binaryBits.length; i += 8) {
+//            binaryBits[i] = encrypted.substring(i, i + 8);
+//        }
 
         //for each thing in the array,
             //translate from binary to regular numbers
