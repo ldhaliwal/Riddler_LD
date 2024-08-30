@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * The Riddler:
  * A puzzle by Zach Blick
@@ -50,14 +52,11 @@ public class Riddler {
         for (String asciiChar : asciiCharacters) {
             // Changes the string ASCII number to an integer
             int asciiValue = Integer.parseInt(asciiChar);
-
             // Changes the ASCII number to its letter character
             char character = (char) asciiValue;
-
             // Adds the character to the final decrypted string
             decrypted.append(character);
         }
-
         System.out.println(decrypted.toString());
         return decrypted.toString();
     }
@@ -66,30 +65,51 @@ public class Riddler {
         StringBuilder decrypted = new StringBuilder();
 
         // TODO: Complete the decryptThree() function.
-
         // ASCII Binary
-
         // split digits into an array
-            // new array thing every 8 digits
+        // new array thing every 8 digits
+        int arraySize = (int) Math.ceil(encrypted.length() / 8.0);
+        String[] binaryBits = new String[arraySize];
+
+        for (int i = 0; i < binaryBits.length; i++) {
+            int start = i * 8;
+            int end = Math.min(start + 8, encrypted.length());
+            binaryBits[i] = encrypted.substring(start, end);
+        }
 
         //for each thing in the array,
             //translate from binary to regular numbers
+        int[] numerical = new int[binaryBits.length];
+
+        for (int i = 0; i < binaryBits.length; i++) {
+            numerical[i] = Integer.parseInt(binaryBits[i], 2);
+        }
 
         // for each number in the array
             //change into its letter value
             // add it to the final string
+
+        for (int asciiValue : numerical) {
+           char character = (char) asciiValue;
+           decrypted.append(character);
+        }
 
         System.out.println(decrypted.toString());
         return decrypted.toString();
     }
 
     public String decryptFour(String encrypted) {
-        String decrypted = "";
+        StringBuilder decrypted = new StringBuilder();
+        int shift = 9984;
 
-        // TODO: Complete the decryptFour() function.
+        for (int i = 0; i < encrypted.length(); i++) {
+            char character = encrypted.charAt(i);
 
-        //????
+            char decryptedChar = (char)(((character + shift) % 26) + 'A');
+            decrypted.append(decryptedChar);
+        }
 
-        return decrypted;
+        System.out.println(decrypted.toString());
+        return decrypted.toString();
     }
 }
