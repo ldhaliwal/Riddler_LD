@@ -100,12 +100,12 @@ public class Riddler {
 
     public String decryptFour(String encrypted) {
         StringBuilder decrypted = new StringBuilder();
-        int shift = 9984;
+        int shift = 9919;
 
         for (int i = 0; i < encrypted.length(); i++) {
             char character = encrypted.charAt(i);
 
-            char decryptedChar = (char)(((character + shift) % 26) + 'A');
+            char decryptedChar = (char)(character - shift);
             decrypted.append(decryptedChar);
         }
 
